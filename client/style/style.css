@@ -27,6 +27,20 @@
 	margin-right: 10px;
 }
 
-.media-align{
-	display: inline;
+.address {
+	float: right;
+}
+
+.media-margin {
+	margin-bottom: 10px;
+}
+.list-spacing {
+	width: 70%;
+}
+
+.form-inline {
+	margin-bottom: 20px;
+}
+.form-inline input, label{
+	margin-right: 10px;
 }

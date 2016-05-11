@@ -16,15 +16,18 @@ class Feature extends Component {
 		} else {
 			return this.props.data.map((data) => {
 				return (
-					<li key={data.id} className="list-group-item">
-						<div className="video-list media">
+					<li key={data.id} className="list-group-item list-spacing">
+						<div className="media">
+						<p className="address">{data.location.display_address[0]}</p>
 							<div className="media-left">
-								<img className="media-object" src={data.image_url} />
+								<a href={data.url}><img className="media-object media-margin" src={data.image_url} /></a>
 							</div>
 							<div className="media-body">
-								<h5 className="media-heading">{data.name}</h5>
-								<p className="media-align"><img className="media-object media-align" src={data.rating_img_url} />{data.review_count} reviews</p>
+								<a href={data.url}><h4 className="media-heading">{data.name}</h4></a>
+								<img className="media-object" src={data.rating_img_url} />
+								<p>{data.review_count} reviews</p>
 							</div>
+							<p>{data.snippet_text}</p>
 						</div>
 					</li>
 				);
@@ -36,9 +39,9 @@ class Feature extends Component {
 		return (
 			<div>
 				<div>
-					<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+					<form className="form-inline" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 						<fieldset className="form-group">
-							<label>Term:</label>
+							<label>Find:</label>
 							<input className="form-control" {...term} />
 						</fieldset>
 						<fieldset className="form-group">
