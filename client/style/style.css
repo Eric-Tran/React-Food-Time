@@ -1,0 +1,32 @@
+#welcome_header {
+	text-align: center;
+}
+
+.error {
+	color: red;
+}
+
+.navbar-default {
+	background-color: black;
+}
+
+.navbar-brand, .nav-link {
+	color: gray;
+}
+
+.top-margin {
+	margin-top: 100px;
+}
+
+.form-size{
+	width: 50%;
+	margin: 0 auto;
+}
+
+.signin {
+	margin-right: 10px;
+}
+
+.media-align{
+	display: inline;
+}

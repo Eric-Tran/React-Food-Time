@@ -1,0 +1,6 @@
+.DS_Store
+bundle.js
+npm-debug.log
+/client/node_modules
+/server/node_modules
+/server/config.js
