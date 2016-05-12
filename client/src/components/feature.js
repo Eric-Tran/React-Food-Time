@@ -26,6 +26,8 @@ class Feature extends Component {
 								<a href={data.url}><h4 className="media-heading">{data.name}</h4></a>
 								<img className="media-object" src={data.rating_img_url} />
 								<p>{data.review_count} reviews</p>
+								<button className="btn btn-primary btn-sm">Add Wait Time</button>
+								<span> Wait Time:</span>
 							</div>
 							<p>{data.snippet_text}</p>
 						</div>

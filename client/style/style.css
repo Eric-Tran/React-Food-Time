@@ -30,7 +30,12 @@
 .address {
 	float: right;
 }
-
+.media-body p {
+	margin-bottom: 0px;
+}
+/*.media-body span {
+	display: block;
+}*/
 .media-margin {
 	margin-bottom: 10px;
 }

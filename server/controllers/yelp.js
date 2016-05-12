@@ -1,5 +1,6 @@
 const Yelp = require('yelp');
 const config = require('../config');
+const Time = require('../models/timeData');
 
 const yelp = new Yelp({
   consumer_key: config.consumer_key,
@@ -13,8 +14,21 @@ exports.searchYelp = function(req, res, next) {
 		if (err) {
 			return console.log(err);
 		} else {
-			console.log(data);
-			res.send(data);
+			Time.find({}, function(err, result) {
+				if (err) {
+					console.log('Error cannot find data');
+				} else {
+					for (var i = 0; i < data.businesses.length; i++) {
+						for (var x = 0; x < result.length; x++) {
+							if (data.businesses[i].id == result[x].business_id) {
+								data.businesses[i].wait_time = result[x].wait_time;
+							} 
+						}
+					}
+					res.send(data);
+				}
+			})
 		}
 	})
 }
+
