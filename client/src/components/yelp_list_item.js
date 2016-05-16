@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { yelpData } from '../actions/index';
 import { reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 class YelpList extends Component {
 	constructor(props) {
@@ -45,22 +45,54 @@ class YelpList extends Component {
             			<Modal.Title>Add Wait Time</Modal.Title>
           			</Modal.Header>
           			<Modal.Body>
-			            <h4>Text in a modal</h4>
-			            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-			            <h4>Popover in a modal</h4>
-			            <p>there is a </p>
-
-			            <h4>Tooltips in a modal</h4>
-			            <p>there is a</p>
-
-			            <hr />
-
-			            <h4>Overflowing text to show scroll behavior</h4>
-			            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+			         	<form className="form-inline">
+				         	<fieldset className="form-group">
+				         		<label>Arrived Approximately:</label>
+				         		<select className="form-control">
+				         			<option value="1 AM">1 AM</option>
+				         			<option value="2 AM">2 AM</option>
+				         			<option value="3 AM">3 AM</option>
+				         			<option value="4 AM">4 AM</option>
+				         			<option value="5 AM">5 AM</option>
+				         			<option value="6 AM">6 AM</option>
+				         			<option value="7 AM">7 AM</option>
+				         			<option value="8 AM">8 AM</option>
+				         			<option value="9 AM">9 AM</option>
+				         			<option value="10 AM">10 AM</option>
+				         			<option value="11 AM">11 AM</option>
+				         			<option value="12 PM">12 PM</option>
+				         			<option value="1 PM">1 PM</option>
+				         			<option value="2 PM">2 PM</option>
+				         			<option value="3 PM">3 PM</option>
+				         			<option value="4 PM">4 PM</option>
+				         			<option value="5 PM">5 PM</option>
+				         			<option value="6 PM">6 PM</option>
+				         			<option value="7 PM">7 PM</option>
+				         			<option value="8 PM">8 PM</option>
+				         			<option value="9 PM">9 PM</option>
+				         			<option value="10 PM">10 PM</option>
+				         			<option value="11 PM">11 PM</option>
+				         			<option value="12 AM">12 AM</option>
+				         		</select>
+				         	</fieldset>
+			         		<hr />
+			         		<fieldset className="form-group">
+				         		<label>Wait is less than:</label>
+				         		<select className="form-control">
+				         			<option value="10 minutes">10 minutes</option>
+				         			<option value="20 minutes">20 minutes</option>
+				         			<option value="30 minutes">30 minutes</option>
+				         			<option value="45 minutes">45 minutes</option>
+				         			<option value="1 hour">1 hour</option>
+				         			<option value="1 hour 30 minutes">1 hour 30 minutes</option>
+				         			<option value="2 hours">2 hours</option>
+				         			<option value="2 hours+">2 hours+</option>
+				         		</select> 
+			         		</fieldset>
+			         	</form>
           			</Modal.Body>
           			<Modal.Footer>
-            			<Button onClick={this.close.bind(this)}>Close</Button>
+            			<button onClick={this.close.bind(this)}>Close</button>
          			</Modal.Footer>
         			</Modal>
 					<span> Wait Time:</span>
