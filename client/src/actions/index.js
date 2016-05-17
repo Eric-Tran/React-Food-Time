@@ -76,9 +76,9 @@ export function fetchMessage() {
 }
 
 //Posting Wait Data
-export function postWait( {day, arrival, wait} ) {
+export function postWait( {id, day, arrival, wait} ) {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/data`, {day, arrival, wait})
+		axios.post(`${ROOT_URL}/data`, {id, day, arrival, wait})
 		.then(response => {
 			dispatch({
 				type: POST_WAIT_DATA,

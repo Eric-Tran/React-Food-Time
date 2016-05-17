@@ -19,9 +19,15 @@ exports.searchYelp = function(req, res, next) {
 					console.log('Error cannot find data');
 				} else {
 					for (var i = 0; i < data.businesses.length; i++) {
+						data.businesses[i].wait_data = [];
 						for (var x = 0; x < result.length; x++) {
 							if (data.businesses[i].id == result[x].business_id) {
-								data.businesses[i].wait_time = result[x].wait_time;
+								var obj = {
+									wait: result[x].wait_time,
+									arrival: result[x].arrival_time,
+									day: result[x].day
+								}
+								data.businesses[i].wait_data.push(obj);
 							} 
 						}
 					}
