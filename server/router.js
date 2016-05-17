@@ -1,5 +1,6 @@
 const Authentication = require('./controllers/authentication');
 const Yelp = require('./controllers/yelp');
+const Time = require('./controllers/time');
 const passportService = require('./services/passport');
 const passport = require('passport');
 
@@ -17,4 +18,11 @@ module.exports = function(app) {
 
 	//YELP API
 	app.post('/yelp', Yelp.searchYelp);
+
+
+	//Wait Data
+	app.post('/data', function(req, res) {
+		Time.create(req, res);
+	});
+
 }

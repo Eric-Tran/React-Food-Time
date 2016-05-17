@@ -1,6 +1,6 @@
 const Yelp = require('yelp');
 const config = require('../config');
-const Time = require('../models/timeData');
+const Time = require('../models/timeModel');
 
 const yelp = new Yelp({
   consumer_key: config.consumer_key,

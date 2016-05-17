@@ -6,7 +6,8 @@ import {
 	UNAUTH_USER,
 	AUTH_ERROR,
 	FETCH_MESSAGE,
-	FETCH_YELP_DATA
+	FETCH_YELP_DATA,
+	POST_WAIT_DATA
 } from './types';
 
 const ROOT_URL = 'http://localhost:8000';
@@ -74,10 +75,24 @@ export function fetchMessage() {
 	}
 }
 
+//Posting Wait Data
+export function postWait( {day, arrival, wait} ) {
+	return function(dispatch) {
+		axios.post(`${ROOT_URL}/data`, {day, arrival, wait})
+		.then(response => {
+			dispatch({
+				type: POST_WAIT_DATA,
+				payload: response
+			})
+		})
+	}
+}
+
+
 //YELP API
 export function fetchData( {term, location} ) {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/yelp`, {term, location })
+		axios.post(`${ROOT_URL}/yelp`, {term, location})
 		.then(response => {
 			dispatch({ 
 				type: FETCH_YELP_DATA,
