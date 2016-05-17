@@ -42,10 +42,12 @@
 .list-spacing {
 	width: 70%;
 }
-
 .form-inline {
 	margin-bottom: 20px;
 }
-.form-inline input, label{
+.form-inline input, label, .btn-spacing {
 	margin-right: 10px;
+}
+.spacing {
+	margin-left: 10px;
 }
