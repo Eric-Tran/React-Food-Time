@@ -1,3 +1,6 @@
+p {
+	font-size: .9em;
+}
 #welcome_header {
 	text-align: center;
 }
@@ -27,15 +30,18 @@
 	margin-right: 10px;
 }
 
-.address {
+.address{
 	float: right;
+	display: block;
 }
+.address p {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
 .media-body p {
 	margin-bottom: 0px;
 }
-/*.media-body span {
-	display: block;
-}*/
 .media-margin {
 	margin-bottom: 10px;
 }
@@ -50,4 +56,7 @@
 }
 .spacing {
 	margin-left: 10px;
+}
+.wait{
+	color: green;
 }

@@ -10,7 +10,7 @@ class YelpList extends Component {
 		super(props);
 		this.state = {showModal: false};
 	}
-	handleFormSubmit({ day, arrival, wait }) {
+	handleFormSubmit({ day="Monday", arrival="1 AM", wait="10 minutes" }) {
 		var id = this.props.data.id;
 		this.props.postWait( { id, day, arrival, wait })
 		this.setState({showModal: false})
@@ -31,12 +31,16 @@ class YelpList extends Component {
 		return (
 		<li className="list-group-item list-spacing">
 			<div className="media">
-				<p className="address">{this.props.data.location.display_address[0]}</p>
+			<div className="address">
+				<p>{this.props.data.location.display_address[0]}</p>
+				<p>{this.props.data.location.display_address[2]}</p>
+				<p>{this.props.data.display_phone}</p>
+				</div>
 				<div className="media-left">
 					<a href={this.props.data.url}><img className="media-object media-margin" src={this.props.data.image_url} /></a>
 				</div>
 				<div className="media-body">
-					<a href={this.props.data.url}><h4 className="media-heading">{this.props.data.key}. {this.props.data.name}</h4></a>
+					<a href={this.props.data.url}><h5 className="media-heading">{this.props.data.key}. {this.props.data.name}</h5></a>
 					<img className="media-object" src={this.props.data.rating_img_url} />
 					<p>{this.props.data.review_count} reviews</p>
 					<button 
@@ -115,7 +119,7 @@ class YelpList extends Component {
 	         			</Modal.Footer>
          			</form>
         			</Modal>
-					<span> Wait: {this.props.data.est_wait}</span>
+					<span className="wait"> est. wait is {this.props.data.est_wait}</span>
 				</div>
 				<p>{this.props.data.snippet_text}</p>
 			</div>
