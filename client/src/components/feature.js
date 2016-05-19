@@ -2,13 +2,25 @@ import React, { Component } from 'react';
 import * as actions from '../actions';
 import { reduxForm } from 'redux-form';
 import YelpListItem from './yelp_list_item';
+import GoogleMap from './food_map';
 
 class Feature extends Component {
 	// componentWillMount() {
 	// 	this.props.fetchMessage();
 	// }
+	constructor(props) {
+		super(props);
+		this.state = {showMap: false};
+	}
+	hide() {
+		this.setState({showMap: false})
+	}
+	show() {
+		this.setState({showMap: true})
+	}
 	handleFormSubmit({ term, location }) {
 		this.props.fetchData( { term, location });
+		this.setState({showMap: true});
 	}
 	renderData() {
 		if (typeof this.props.data == 'undefined') {
@@ -21,6 +33,15 @@ class Feature extends Component {
 						data={data} />
 				)
 			});
+		}
+	}
+	renderMap() {
+		if (this.state.showMap == true) {
+			const lon = -115.1647865;
+			const lat = 36.1319138;
+		return (
+			<GoogleMap lon={lon} lat={lat} />
+		)
 		}
 	}
 	render() {
@@ -39,6 +60,9 @@ class Feature extends Component {
 						</fieldset>
 						<button action="submit" className="btn btn-primary">Search</button>
 					</form>
+				</div>
+				<div className="map_container">
+					{this.renderMap()}
 				</div>
 				<ul className="list-group">
 				{this.renderData()}

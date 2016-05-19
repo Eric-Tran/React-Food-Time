@@ -46,7 +46,8 @@ p {
 	margin-bottom: 10px;
 }
 .list-spacing {
-	width: 70%;
+	position: relative;
+	width: 65%;
 }
 .form-inline {
 	margin-bottom: 20px;
@@ -60,3 +61,10 @@ p {
 .wait{
 	color: green;
 }
+
+.map_container {
+	height: 350px;
+	width: 350px;
+	float: right;
+
+	}

@@ -18,11 +18,9 @@ class YelpList extends Component {
 	}
 
 	close() {
-		console.log('closed');
     this.setState({showModal: false});
 	}
   	open() {
-  		console.log('opened');
     this.setState({showModal: true});
  	}
 
