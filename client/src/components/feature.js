@@ -5,9 +5,6 @@ import YelpListItem from './yelp_list_item';
 import GoogleMap from './food_map';
 
 class Feature extends Component {
-	// componentWillMount() {
-	// 	this.props.fetchMessage();
-	// }
 	constructor(props) {
 		super(props);
 		this.state = {showMap: false};
@@ -35,12 +32,12 @@ class Feature extends Component {
 			});
 		}
 	}
-	renderMap() {
+	renderMap(data) {
 		if (this.state.showMap == true) {
-			const lon = -115.1647865;
-			const lat = 36.1319138;
+			const lon = data[0].location.coordinate.longitude;
+			const lat = data[0].location.coordinate.latitude;
 		return (
-			<GoogleMap lon={lon} lat={lat} />
+			<GoogleMap data={data} lon={lon} lat={lat} />
 		)
 		}
 	}
@@ -62,7 +59,7 @@ class Feature extends Component {
 					</form>
 				</div>
 				<div className="map_container">
-					{this.renderMap()}
+				{this.renderMap(this.props.data)}
 				</div>
 				<ul className="list-group">
 				{this.renderData()}

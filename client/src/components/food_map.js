@@ -4,43 +4,19 @@ import { default as canUseDOM } from "can-use-dom";
 import {default as _ }  from "lodash";
 import { GoogleMapLoader, GoogleMap, Marker } from "react-google-maps";
 import { triggerEvent } from "react-google-maps/lib/utils";
+import { connect } from 'react-redux';
 
-
-export default class FoodMap extends Component {
+class FoodMap extends Component {
 
   state = {
     markers: [{
       position: {
-        lat: 25.0112183,
-        lng: 121.52067570000001,
+        lat: 36.1699,
+        lng: -115.1398,
       },
-      key: `Taiwan`,
+      key: `Las Vegas`,
       defaultAnimation: 2,
     }],
-  }
-
-  constructor(props, context) {
-    super(props, context);
-    this.handleWindowResize = _.throttle(this.handleWindowResize, 500);
-  }
-
-  componentDidMount() {
-    if (!canUseDOM) {
-      return;
-    }
-    window.addEventListener(`resize`, this.handleWindowResize);
-  }
-
-  componentWillUnmount() {
-    if (!canUseDOM) {
-      return;
-    }
-    window.removeEventListener(`resize`, this.handleWindowResize);
-  }
-
-  handleWindowResize() {
-    console.log(`handleWindowResize`, this._googleMapComponent);
-    triggerEvent(this._googleMapComponent, `resize`);
   }
 
   /*
@@ -94,3 +70,5 @@ export default class FoodMap extends Component {
     );
   }
 }
+
+export default connect(null)(FoodMap);
