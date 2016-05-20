@@ -9,20 +9,33 @@ import { connect } from 'react-redux';
 class FoodMap extends Component {
 
   state = {
-    markers: [{
-      position: {
-        lat: 36.1699,
-        lng: -115.1398,
-      },
-      key: `Las Vegas`,
-      defaultAnimation: 2,
-    }],
+    markers: []
   }
 
   /*
    * This is called when you click on the map.
    * Go and try click now.
    */
+  componentWillMount() {
+    let { markers } = this.state;
+
+    let mapData = this.props.data;
+    for(var i = 0; i < mapData.length; i++) {
+       markers = update(markers, {
+      $push: [
+        {
+          position: {
+            lat: mapData[i].location.coordinate.latitude,
+            lng: mapData[i].location.coordinate.longitude
+          },
+          defaultAnimation: 2,
+          key: mapData[i].key, // Add a key property for: http://fb.me/react-warning-keys
+        },
+      ],
+    });
+    }
+    this.setState({ markers });
+  }
 
   handleMarkerRightclick(index, event) {
     /*
@@ -40,6 +53,7 @@ class FoodMap extends Component {
   }
 
   render() {
+    console.log('this is the map data', this.props.data);
     return (
       <GoogleMapLoader
         containerElement={
@@ -53,7 +67,7 @@ class FoodMap extends Component {
         googleMapElement={
           <GoogleMap
             ref={(map) => (this._googleMapComponent = map) && console.log(map.getZoom())}
-            defaultZoom={12}
+            defaultZoom={11}
             defaultCenter={{ lat: this.props.lat, lng: this.props.lon }}
           >
             {this.state.markers.map((marker, index) => {
