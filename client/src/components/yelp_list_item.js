@@ -35,10 +35,10 @@ class YelpList extends Component {
 				<p>{this.props.data.display_phone}</p>
 				</div>
 				<div className="media-left">
-					<a href={this.props.data.url}><img className="media-object media-margin" src={this.props.data.image_url} /></a>
+					<a href={this.props.data.url} target="blank"><img className="media-object media-margin" src={this.props.data.image_url} /></a>
 				</div>
 				<div className="media-body">
-					<a href={this.props.data.url}><h5 className="media-heading">{this.props.data.key}. {this.props.data.name}</h5></a>
+					<a href={this.props.data.url} target="blank"><h5 className="media-heading">{this.props.data.key}. {this.props.data.name}</h5></a>
 					<img className="media-object" src={this.props.data.rating_img_url} />
 					<p>{this.props.data.review_count} reviews</p>
 					<button 
