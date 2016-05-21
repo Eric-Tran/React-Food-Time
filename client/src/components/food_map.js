@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { default as update } from "react-addons-update";
 import { default as canUseDOM } from "can-use-dom";
 import {default as _ }  from "lodash";
-import { GoogleMapLoader, GoogleMap, Marker } from "react-google-maps";
+import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { triggerEvent } from "react-google-maps/lib/utils";
 import { connect } from 'react-redux';
 
@@ -28,6 +28,19 @@ class FoodMap extends Component {
             lat: mapData[i].location.coordinate.latitude,
             lng: mapData[i].location.coordinate.longitude
           },
+          showInfo: false,
+          info: {
+            name: mapData[i].name,
+            review_img: mapData[i].rating_img_url,
+            review_count: mapData[i].review_count,
+            img: mapData[i].image_url,
+            img_link: mapData[i].yelp_img_url,
+            wait: mapData[i].est_wait,
+            address: {
+              line1: mapData[i].location.display_address[0],
+              line2: mapData[i].location.display_address[2]
+            }
+          },
           defaultAnimation: 2,
           key: mapData[i].key, // Add a key property for: http://fb.me/react-warning-keys
         },
@@ -37,23 +50,44 @@ class FoodMap extends Component {
     this.setState({ markers });
   }
 
-  handleMarkerRightclick(index, event) {
-    /*
-     * All you modify is data, and the view is driven by data.
-     * This is so called data-driven-development. (And yes, it's now in
-     * web front end and even with google maps API.)
-     */
-    let { markers } = this.state;
-    markers = update(markers, {
-      $splice: [
-        [index, 1],
-      ],
-    });
-    this.setState({ markers });
+  handleMarkerClick(marker) {
+    console.log('marker clicked!', marker);
+    marker.showInfo = true;
+    this.setState({ marker });
   }
 
+  handleMarkerClose(marker) {
+    marker.showInfo = false;
+    this.setState({ marker });
+  }
+
+  renderInfoWindow(marker) {
+    console.log('infoWindow rendered', marker);
+    return (
+      <InfoWindow
+      key={marker.key}
+      onCloseclick={this.handleMarkerClose.bind(this, marker)} >
+      <div>
+        <div className="info">
+          <h6>{marker.info.name}</h6>
+          <img src={marker.info.review_img} align="left" />
+          <p>{marker.info.review_count} reviews</p>
+          <p className='wait'>Wait is {marker.info.wait}</p>
+          <p className='info_p'>{marker.info.address.line1}</p>
+          <p>{marker.info.address.line2}</p>
+        </div>
+        <div className="info_img">
+        <img src={marker.info.img} />
+        <a href={marker.info.img_link} target="_blank">view more photos</a>
+        </div>
+      </div>
+      </InfoWindow>
+
+    )
+  }
   render() {
-    console.log('this is the map data', this.props.data);
+    console.log('this is the map data', this.state.markers);
+    const { markers } = this.state;
     return (
       <GoogleMapLoader
         containerElement={
@@ -70,12 +104,13 @@ class FoodMap extends Component {
             defaultZoom={11}
             defaultCenter={{ lat: this.props.lat, lng: this.props.lon }}
           >
-            {this.state.markers.map((marker, index) => {
+            {markers.map((marker, index) => {
               return (
                 <Marker
                   {...marker}
-                  onclick={this.handleMarkerRightclick.bind(this, index)}
-                />
+                  onClick={this.handleMarkerClick.bind(this, marker)} >
+                {marker.showInfo ? this.renderInfoWindow(marker) : null}
+                </Marker>
               );
             })}
           </GoogleMap>

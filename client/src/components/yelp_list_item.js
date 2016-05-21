@@ -27,7 +27,7 @@ class YelpList extends Component {
 	render() {
 		const { handleSubmit, fields: { day, wait, arrival }} = this.props;
 		return (
-		<li className="list-group-item list-spacing">
+		<li className="list-group-item">
 			<div className="media">
 			<div className="address">
 				<p>{this.props.data.location.display_address[0]}</p>

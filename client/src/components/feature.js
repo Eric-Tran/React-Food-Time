@@ -58,12 +58,12 @@ class Feature extends Component {
 						<button action="submit" className="btn btn-primary">Search</button>
 					</form>
 				</div>
+				<ul className="list-group list-container">
+				{this.renderData()}
+				</ul>
 				<div className="map_container">
 				{this.renderMap(this.props.data)}
 				</div>
-				<ul className="list-group">
-				{this.renderData()}
-				</ul>
 			</div>
 		)
 	}

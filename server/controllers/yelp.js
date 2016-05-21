@@ -14,6 +14,7 @@ exports.searchYelp = function(req, res, next) {
 		if (err) {
 			return console.log(err);
 		} else {
+			data.businesses.length = 10;
 			Time.find({}, function(err, result) {
 				if (err) {
 					console.log('Error cannot find data');
@@ -40,6 +41,7 @@ exports.searchYelp = function(req, res, next) {
 							var display_phone = paren1 + phone.substring(0,3) + paren2 + phone.substring(3,6) + dash + phone.substring(6);
 							data.businesses[i].display_phone = display_phone;
 						}
+						data.businesses[i].yelp_img_url = "https://www.yelp.com/biz_photos/" + data.businesses[i].id;
 						data.businesses[i].est_wait = "not available";
 						data.businesses[i].wait_data = [];
 						data.businesses[i].key = num++;
