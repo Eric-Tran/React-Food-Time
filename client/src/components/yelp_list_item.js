@@ -32,18 +32,16 @@ class YelpList extends Component {
     this.setState({showAllModal: true});
  	}
 
- 	renderTableRows(waitData) {
- 		const day = waitData.day;
- 		const arrival = waitData.arrival;
- 		const wait = waitData.wait;
- 		
- 		return (
- 			<tr key={Math.random()}>
-	 			<td>{day}</td>
-	 			<td>{arrival}</td>
-	 			<td>{wait}</td>
- 			</tr>
- 		);	
+ 	renderTableRows() {
+ 		return this.props.data.wait_data.map((wait) => {
+ 			return (
+ 				<tr key={Math.random()}>
+		 			<td>{wait.day}</td>
+		 			<td>{wait.arrival}</td>
+		 			<td>{wait.wait}</td>
+ 				</tr>
+ 			)
+ 		})
  	}
 	render() {
 		const { handleSubmit, fields: { day, wait, arrival }} = this.props;
@@ -59,7 +57,7 @@ class YelpList extends Component {
 					<a href={this.props.data.url} target="blank"><img className="media-object media-margin" src={this.props.data.image_url} /></a>
 				</div>
 				<div className="media-body">
-					<a href={this.props.data.url} target="blank"><h5 className="media-heading">{this.props.data.key}. {this.props.data.name}</h5></a>
+					<a href={this.props.data.url} target="blank"><h5 className="media-heading">{this.props.data.name}</h5></a>
 					<img className="media-object" src={this.props.data.rating_img_url} />
 					<p>{this.props.data.review_count} reviews</p>
 					<button 
@@ -159,7 +157,7 @@ class YelpList extends Component {
  									</tr>
 				 				</thead>
 				 				<tbody>
-				 					{this.props.data.wait_data.map(this.renderTableRows)}
+				 					{this.renderTableRows()}
 				 				</tbody>
 				 					
 				 			</table>
