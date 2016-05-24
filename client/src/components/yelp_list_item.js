@@ -8,13 +8,15 @@ import * as actions from '../actions';
 class YelpList extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {showModal: false};
+		this.state = {
+			showModal: false,
+			showAllModal: false
+		};
 	}
 	handleFormSubmit({ day="Monday", arrival="1 AM", wait="10 minutes" }) {
 		var id = this.props.data.id;
 		this.props.postWait( { id, day, arrival, wait })
 		this.setState({showModal: false})
-
 	}
 
 	close() {
@@ -23,7 +25,26 @@ class YelpList extends Component {
   	open() {
     this.setState({showModal: true});
  	}
+ 	closeAll() {
+    this.setState({showAllModal: false});
+	}
+  	openAll() {
+    this.setState({showAllModal: true});
+ 	}
 
+ 	renderTableRows(waitData) {
+ 		const day = waitData.day;
+ 		const arrival = waitData.arrival;
+ 		const wait = waitData.wait;
+ 		
+ 		return (
+ 			<tr key={Math.random()}>
+	 			<td>{day}</td>
+	 			<td>{arrival}</td>
+	 			<td>{wait}</td>
+ 			</tr>
+ 		);	
+ 	}
 	render() {
 		const { handleSubmit, fields: { day, wait, arrival }} = this.props;
 		return (
@@ -113,11 +134,41 @@ class YelpList extends Component {
 	          			</Modal.Body>
 	          			<Modal.Footer>
 	          				<button action="submit" className="btn btn-primary btn-spacing">Submit</button>
-	            			<button className="btn btn-default" onClick={this.close.bind(this)}>Close</button>
+	            			<button type="button" className="btn btn-default" onClick={this.close.bind(this)}>Close</button>
 	         			</Modal.Footer>
          			</form>
         			</Modal>
-					<span className="wait"> est. wait is {this.props.data.est_wait}</span>
+        			<button 
+						className="btn btn-default btn-sm"
+						bsStyle="primary"
+						bsSize="large"
+						onClick = {this.openAll.bind(this)}>
+						See All
+					</button>
+					<Modal show={this.state.showAllModal} onHide={this.closeAll.bind(this)}>
+						<Modal.Header closeButton>
+	            		<Modal.Title>Added Wait Times</Modal.Title>
+	          		</Modal.Header>
+	          		<Modal.Body>
+	          			<table className="table table-striped table-bordered table-condensed">
+ 								<thead>
+ 									<tr>
+ 											<th>Day</th>
+ 											<th>Arrival Time</th>
+ 											<th>Wait Time:</th>
+ 									</tr>
+				 				</thead>
+				 				<tbody>
+				 					{this.props.data.wait_data.map(this.renderTableRows)}
+				 				</tbody>
+				 					
+				 			</table>
+	          		</Modal.Body>
+						<Modal.Footer>
+							<button type="button" className="btn btn-default" onClick={this.closeAll.bind(this)}>Close</button>
+						</Modal.Footer>
+					</Modal>
+					<p className="wait"> est. wait is {this.props.data.est_wait}</p>
 				</div>
 				<p>{this.props.data.snippet_text}</p>
 			</div>
@@ -127,12 +178,9 @@ class YelpList extends Component {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ yelpData: yelpData }, dispatch);
-}
 
 
 export default reduxForm({
 	form: 'waitForm',
 	fields: ['day', 'arrival', 'wait']
-}, mapDispatchToProps, actions)(YelpList);
+}, null, actions)(YelpList);

@@ -62,7 +62,13 @@ p {
 .wait{
 	color: green;
 }
+.btn-sm {
+	margin-right: 10px;
+}
 
+.media-body {
+	padding-bottom: 10px;
+}
 .map_container {
 	display:inline-block;
 	height: 350px;
