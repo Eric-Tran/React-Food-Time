@@ -1,6 +1,7 @@
 const Yelp = require('yelp');
 const config = require('../config');
 const Time = require('../models/timeModel');
+const Activity = require('../models/activityModel');
 
 const yelp = new Yelp({
   consumer_key: config.consumer_key,
@@ -15,6 +16,12 @@ exports.searchYelp = function(req, res, next) {
 			return console.log(err);
 		} else {
 			data.businesses.length = 10;
+			var activity = new Activity({term: req.body.term, location: req.body.location, created_at: new Date});
+			activity.save(function(err) {
+				if(err){
+					console.log(err);
+				}
+			})
 			Time.find({}, function(err, result) {
 				if (err) {
 					console.log('Error cannot find data');

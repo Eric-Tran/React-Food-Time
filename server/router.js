@@ -25,4 +25,9 @@ module.exports = function(app) {
 		Time.create(req, res);
 	});
 
+	//Recent Activity
+	app.get('/activity', function(req, res) {
+		Time.show(req, res);
+	});
+
 }
