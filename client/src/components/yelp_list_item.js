@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { yelpData } from '../actions/index';
 import { reduxForm } from 'redux-form';
-import { bindActionCreators } from 'redux';
 import { Modal } from 'react-bootstrap';
 import * as actions from '../actions';
 
@@ -15,7 +14,8 @@ class YelpList extends Component {
 	}
 	handleFormSubmit({ day="Monday", arrival="1 AM", wait="10 minutes" }) {
 		var id = this.props.data.id;
-		this.props.postWait( { id, day, arrival, wait })
+		var name = this.props.data.name;
+		this.props.postWait( { id, day, arrival, wait, name })
 		this.setState({showModal: false})
 	}
 
@@ -44,6 +44,7 @@ class YelpList extends Component {
  		})
  	}
 	render() {
+		console.log("this is the wait",this.props.data.wait_data)
 		const { handleSubmit, fields: { day, wait, arrival }} = this.props;
 		return (
 		<li className="list-group-item">

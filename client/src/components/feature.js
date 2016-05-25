@@ -3,8 +3,13 @@ import * as actions from '../actions';
 import { reduxForm } from 'redux-form';
 import YelpListItem from './yelp_list_item';
 import GoogleMap from './food_map';
+import RecentActivity from './recent_activity';
 
 class Feature extends Component {
+	componentWillMount() {
+		this.props.fetchRecentActivity();
+	}
+	
 	constructor(props) {
 		super(props);
 		this.state = {showMap: false};
@@ -21,7 +26,10 @@ class Feature extends Component {
 	}
 	renderData() {
 		if (typeof this.props.data == 'undefined') {
-			return;
+			return (
+				<RecentActivity
+					activity={this.props.activity} />
+			)
 		} else {
 			return this.props.data.map((data) => {
 				return (
@@ -71,7 +79,10 @@ class Feature extends Component {
 
 function mapStateToProps(state) {
 	console.log(state.yelp.data);
-	return { data: state.yelp.data };
+	return { 
+		data: state.yelp.data,
+		activity: state.activity.data
+	 };
 }
 
 export default reduxForm({

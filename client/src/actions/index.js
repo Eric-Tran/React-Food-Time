@@ -7,7 +7,8 @@ import {
 	AUTH_ERROR,
 	FETCH_MESSAGE,
 	FETCH_YELP_DATA,
-	POST_WAIT_DATA
+	POST_WAIT_DATA,
+	FETCH_RECENT_ACTIVITY
 } from './types';
 
 const ROOT_URL = 'http://localhost:8000';
@@ -75,10 +76,24 @@ export function fetchMessage() {
 	}
 }
 
-//Posting Wait Data
-export function postWait( {id, day, arrival, wait} ) {
+//Get recent activity
+export function fetchRecentActivity() {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/data`, {id, day, arrival, wait})
+		axios.get(`${ROOT_URL}/activity`)
+		.then(response => {
+			console.log("this is the res",response)
+			dispatch({
+				type: FETCH_RECENT_ACTIVITY,
+				payload: response
+			})
+		})
+	}
+}
+
+//Posting Wait Data
+export function postWait( {id, day, arrival, wait, name} ) {
+	return function(dispatch) {
+		axios.post(`${ROOT_URL}/data`, {id, day, arrival, wait, name})
 		.then(response => {
 			dispatch({
 				type: POST_WAIT_DATA,
