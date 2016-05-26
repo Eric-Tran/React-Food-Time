@@ -22,7 +22,7 @@ class Signin extends Component {
 		const { handleSubmit, fields: { email, password }} = this.props;
 
 		return (
-			<form className="form-size" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+			<form className="form-size jumbotron" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 				<fieldset className="form-group">
 				{this.renderAlert()}
 					<label>Email:</label>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Yelp from 'yelp';
 import { browserHistory } from 'react-router';
+import { reset } from 'redux-form';
 import { 
 	AUTH_USER,
 	UNAUTH_USER,
@@ -112,7 +113,8 @@ export function fetchData( {term, location} ) {
 			dispatch({ 
 				type: FETCH_YELP_DATA,
 				payload: response 
-			})
+			});
+			dispatch(reset('search'));
 		})
 	}
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Well } from 'react-bootstrap';
 
 export default class RecentActivity extends Component {
 	renderActivity() {
@@ -15,7 +14,7 @@ export default class RecentActivity extends Component {
 				}
 					return (
 						<li key={data._id}>
-							<span className="wait">{data.wait_time}</span> wait on <span className="wait">{data.day} at {data.arrival_time}</span> has been added to <span className="wait">{data.business_name}</span> {this.time}
+							<span className="wait">{data.wait_time}</span> wait on <span className="wait">{data.day} at {data.arrival_time}</span> added to <span className="wait">{data.business_name}</span> {this.time}
 						</li>
 					)
 			})
@@ -23,7 +22,6 @@ export default class RecentActivity extends Component {
 	}
 
 	render() {
-		console.log("this is the datassssss", this.props.activity);
 		return (
 			<div>
 				<h4>Recent Activity</h4>

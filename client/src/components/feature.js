@@ -50,11 +50,12 @@ class Feature extends Component {
 		}
 	}
 	render() {
+		console.log("These are the props", this.props);
 		const { handleSubmit, fields: { term, location }} = this.props;
 		return (
 			<div>
-				<div>
-					<form className="form-inline" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+				<div className="jumbotron wood">
+					<form className="form-inline info" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 						<fieldset className="form-group">
 							<label>Find:</label>
 							<input className="form-control" {...term} />
@@ -63,8 +64,9 @@ class Feature extends Component {
 							<label>Location:</label>
 							<input className="form-control" {...location} />
 						</fieldset>
-						<button action="submit" className="btn btn-primary">Search</button>
+						<button action="submit" className="btn btn-primary gray">Search</button>
 					</form>
+					<img className='yelp_logo' src="../../style/img/yelp.png" alt="Powered by Yelp" />
 				</div>
 				<ul className="list-group list-container">
 				{this.renderData()}

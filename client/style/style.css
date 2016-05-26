@@ -5,12 +5,14 @@ p {
 	text-align: center;
 }
 
+.wood {
+	background-image: url("img/purty_wood.png");
+}
+.gray {
+	background-color: #373a3c !important;
+}
 .error {
 	color: red;
-}
-
-.navbar-default {
-	background-color: black;
 }
 
 .navbar-brand, .nav-link {
@@ -24,8 +26,13 @@ p {
 .form-size{
 	width: 50%;
 	margin: 0 auto;
+	background-image: url("img/purty_wood.png");
 }
 
+.yelp_logo {
+	display: inline-block;
+	margin-left: 20px;
+}
 .signin {
 	margin-right: 10px;
 }
@@ -64,6 +71,10 @@ p {
 }
 .btn-sm {
 	margin-right: 10px;
+}
+
+.btn-primary {
+	background-color: #373a3c;
 }
 
 .media-body {
