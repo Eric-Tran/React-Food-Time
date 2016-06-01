@@ -169,7 +169,7 @@ class YelpList extends Component {
 					</Modal>
 					<p className="wait"> est. wait is {this.props.data.est_wait}</p>
 				</div>
-				<p>{this.props.data.snippet_text}<a href={this.props.data.url}>see more</a></p>
+				<p>{this.props.data.snippet_text}<a href={this.props.data.url} target="blank">see more</a></p>
 			</div>
 		</li>
 

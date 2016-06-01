@@ -58,11 +58,11 @@ class Feature extends Component {
 					<form className="form-inline info" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 						<fieldset className="form-group">
 							<label>Find:</label>
-							<input className="form-control" {...term} />
+							<input className="form-control" {...term} placeholder="food, sushi, Max's" />
 						</fieldset>
 						<fieldset className="form-group">
 							<label>Location:</label>
-							<input className="form-control" {...location} />
+							<input className="form-control" {...location} placeholder="address, city, zip" />
 						</fieldset>
 						<button action="submit" className="btn btn-primary gray">Search</button>
 					</form>
