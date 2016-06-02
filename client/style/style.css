@@ -1,12 +1,13 @@
 p {
 	font-size: .9em;
 }
-#welcome_header {
+#welcome_header, .center {
 	text-align: center;
 }
 
 .wood {
 	background-image: url("img/purty_wood.png");
+	width: 100%;
 }
 .gray {
 	background-color: #373a3c !important;
@@ -23,10 +24,16 @@ p {
 	margin-top: 100px;
 }
 
-.form-size{
+.form-size {
 	width: 50%;
 	margin: 0 auto;
 	background-image: url("img/purty_wood.png");
+}
+
+.form-width {
+	width: 50%;
+	margin: 0 auto;
+	display: inline-block;
 }
 
 .yelp_logo {
@@ -66,6 +73,14 @@ p {
 .spacing {
 	margin-left: 10px;
 }
+.btm-spacing {
+	margin-bottom: 10px;
+}
+
+.thumb_img {
+	width: 200px;
+	height: 125px;
+}
 .wait{
 	color: green;
 }
@@ -86,7 +101,18 @@ p {
 	width: 350px;
 	float: right;
 }
+.map_item_container {
+	height: 350px;
+	width: 350px;
+	float: right;
+}
 
+.no_border {
+	padding: 0;
+	border: none;
+	background: none;
+	margin-right: 10px;
+}
 .info_p {
 margin: 10px 0px 0px 0px;
 padding: 0px;
@@ -106,7 +132,7 @@ padding: 0px;
 	margin: 0px;
 	padding: 0px;
 }
-.info_img a {
+.info_img a, .item_label{
 	display:block;
 }
 

@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form';
 import YelpListItem from './yelp_list_item';
 import GoogleMap from './food_map';
 import RecentActivity from './recent_activity';
-
+import { Link } from 'react-router'
 class Feature extends Component {
 	componentWillMount() {
 		this.props.fetchRecentActivity();
@@ -66,6 +66,7 @@ class Feature extends Component {
 						</fieldset>
 						<button action="submit" className="btn btn-primary gray">Search</button>
 					</form>
+
 					<img className='yelp_logo' src="../../style/img/yelp.png" alt="Powered by Yelp" />
 				</div>
 				<ul className="list-group list-container">
