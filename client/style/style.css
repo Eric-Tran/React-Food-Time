@@ -6,11 +6,12 @@ p {
 }
 
 .wood {
-	background-image: url("img/purty_wood.png");
+	background-image: url("img/background/purty_wood.png");
 	width: 100%;
 }
 .gray {
 	background-color: #373a3c !important;
+	margin-right: 10px;
 }
 .error {
 	color: red;
@@ -23,11 +24,14 @@ p {
 .top-margin {
 	margin-top: 100px;
 }
+.background {
+	background-image: url("img/background/food.png");
+}
 
 .form-size {
 	width: 50%;
 	margin: 0 auto;
-	background-image: url("img/purty_wood.png");
+	background-image: url("img/background/purty_wood.png");
 }
 
 .form-width {
@@ -36,12 +40,13 @@ p {
 	display: inline-block;
 }
 
+.clock_logo {
+	width: 30%;
+	height: 30%;
+}
 .yelp_logo {
 	display: inline-block;
 	margin-left: 20px;
-}
-.signin {
-	margin-right: 10px;
 }
 
 .address{
@@ -78,8 +83,8 @@ p {
 }
 
 .thumb_img {
-	width: 200px;
-	height: 125px;
+	width: 250px;
+	height: 150px;
 }
 .wait{
 	color: green;

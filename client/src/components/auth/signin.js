@@ -22,7 +22,7 @@ class Signin extends Component {
 		const { handleSubmit, fields: { email, password }} = this.props;
 
 		return (
-			<form className="form-size jumbotron" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+			<form className="form-size jumbotron wood" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 				<fieldset className="form-group">
 				{this.renderAlert()}
 					<label>Email:</label>
@@ -32,7 +32,7 @@ class Signin extends Component {
 					<label>Password:</label>
 					<input {...password} type="password" className="form-control" />
 				</fieldset>
-				<button action="submit" className="btn btn-primary">Sign in</button>
+				<button action="submit" className="btn btn-primary gray">Sign in</button>
 			</form>
 		);
 	}

@@ -41,7 +41,7 @@ class FoodItems extends Component {
 		if (this.state.showItems == false) {
 			return (
 				<div>
-					<a href='/items' className="btn btn-primary btm-spacing">Back</a>
+					<a href='/decide' className="btn btn-primary btm-spacing">Back</a>
 				</div>
 			)
 		}
@@ -61,7 +61,7 @@ class FoodItems extends Component {
 			return (
 				<div className="jumbotron wood">
 						<fieldset className="form-group form-width">
-							<label>Location:</label>
+							<label>Enter Your Location:</label>
 							<input className="form-control" value={this.state.location} onChange={this.handleInputChange.bind(this)} />
 						</fieldset>
 						<img className='yelp_logo' src="../../style/img/yelp.png" alt="Powered by Yelp" />
@@ -223,6 +223,15 @@ class FoodItems extends Component {
 					<form className="info" onSubmit={this.handleFormSubmit}>
 						<fieldset className="form-group">
 							<button className='no_border' type="submit">
+							<input type="hidden" value="pasta" />
+							<img className="thumb_img" src='../style/img/thumb/pasta.png' />
+							</button>
+							<p className="center">Pasta</p>
+						</fieldset>
+					</form>
+					<form className="info" onSubmit={this.handleFormSubmit}>
+						<fieldset className="form-group">
+							<button className='no_border' type="submit">
 							<input type="hidden" value="lasagna" />
 							<img className="thumb_img" src='../style/img/thumb/lasagna.png' />
 							</button>
@@ -274,25 +283,21 @@ class FoodItems extends Component {
 							<p className="center">Pork Belly</p>
 						</fieldset>
 					</form>
-					<form className="info" onSubmit={this.handleFormSubmit}>
-						<fieldset className="form-group">
-							<button className='no_border' type="submit">
-							<input type="hidden" value="steak" />
-							<img className="thumb_img" src='../style/img/thumb/steak.png' />
-							</button>
-							<p className="center">Steak</p>
-						</fieldset>
-					</form>
 				</div>
 			)
 		} else {
-		return this.props.data.map((data) => {
+			const list = this.props.data.map((data) => {
 			return (
-					<YelpListItem
-						key={data.id}
-						data={data} />
+				<YelpListItem
+					key={data.id}
+					data={data} />
 			)
-		});
+		})
+		return (
+			<div className="list-container">
+			{list}
+			</div>
+		)
 		}
 	}
 			
@@ -300,9 +305,7 @@ class FoodItems extends Component {
 		return (
 			<div>
 				{this.renderBackBtn()}
-				<div className="list-container">
 				{this.renderItems()}
-				</div>
 				<div className="map_container">
 				{this.renderMap(this.props.data)}
 				</div>

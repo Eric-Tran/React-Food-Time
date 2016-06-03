@@ -28,7 +28,7 @@ export function signinUser({ email, password }) {
 				// - Save the JWT token //localStorage is native to window scope, no importing.
 				localStorage.setItem('token', response.data.token);
 				// - redirect to the route '/feature'
-				browserHistory.push('/feature');
+				browserHistory.push('/search');
 			})
 			.catch(() => {
 				//If the request is bad...
@@ -44,7 +44,7 @@ export function signupUser({ email, password }) {
 		.then(response => {
 			dispatch({ type: AUTH_USER });
 			localStorage.setItem('token', response.data.token);
-			browserHistory.push('/feature');
+			browserHistory.push('/search');
 		})
 		.catch(response => dispatch(authError(response.data.error)));
 	}
@@ -59,15 +59,13 @@ export function authError(error) {
 
 export function signoutUser() {
 	localStorage.removeItem('token');
-
 	return { type: UNAUTH_USER };
 }
 
 export function fetchMessage() {
 	return function(dispatch) {
 		axios.get(ROOT_URL, {
-			headers: { authorization: localStorage.getItem('token') }
-		})
+			headers: { authorization: localStorage.getItem('token') }})
 			.then(response => {
 				dispatch({
 					type: FETCH_MESSAGE,
@@ -82,7 +80,6 @@ export function fetchRecentActivity() {
 	return function(dispatch) {
 		axios.get(`${ROOT_URL}/activity`)
 		.then(response => {
-			console.log("this is the res",response)
 			dispatch({
 				type: FETCH_RECENT_ACTIVITY,
 				payload: response

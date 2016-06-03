@@ -66,7 +66,7 @@ class Feature extends Component {
 						</fieldset>
 						<button action="submit" className="btn btn-primary gray">Search</button>
 					</form>
-
+					<Link to="/decide" className='btn btn-primary gray'>Can't Decide?</Link>
 					<img className='yelp_logo' src="../../style/img/yelp.png" alt="Powered by Yelp" />
 				</div>
 				<ul className="list-group list-container">

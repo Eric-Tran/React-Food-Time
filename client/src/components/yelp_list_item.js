@@ -99,7 +99,7 @@ class YelpList extends Component {
 				         			<option value="20">8 PM</option>
 				         			<option value="21">9 PM</option>
 				         			<option value="22">10 PM</option>
-				         			<option value="13">11 PM</option>
+				         			<option value="23">11 PM</option>
 				         			<option value="24">12 AM</option>
 				         		</select>
 				         	</fieldset>

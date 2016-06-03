@@ -6,7 +6,7 @@ class Header extends Component {
 	renderHeader() {
 		if (this.props.authenticated) {
 			return (
-				<Link to="/feature" className="navbar-brand">Food Time</Link>
+				<Link to="/search" className="navbar-brand">Food Time</Link>
 			)
 		} else {
 			return (
@@ -17,9 +17,17 @@ class Header extends Component {
 	renderAuthenticated() {
 		if (this.props.authenticated) {
 			return (
+				<div>
 				<li className="nav-item pull-right">
-						<Link className="nav-link" to="/signout">Sign Out</Link>
+					<Link className="nav-link" to="/search">Search</Link>
 				</li>
+				<li className="nav-item pull-right">
+					<Link className="nav-link" to="/decide">Decide</Link>
+				</li>
+				<li className="nav-item pull-right">
+					<Link className="nav-link" to="/signout">Sign Out</Link>
+				</li>
+				</div>
 			);
 		} else {
 			return [
