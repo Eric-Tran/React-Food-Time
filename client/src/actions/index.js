@@ -12,7 +12,7 @@ import {
 	FETCH_RECENT_ACTIVITY
 } from './types';
 
-const ROOT_URL = 'http://localhost:8000';
+const ROOT_URL = 'http://ec2-54-149-158-203.us-west-2.compute.amazonaws.com';
 
 export function signinUser({ email, password }) {
 	//reduxThunk gives access to dispatch function allowing us to dispatch our own actions anytime
