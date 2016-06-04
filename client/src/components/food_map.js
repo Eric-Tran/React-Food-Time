@@ -12,10 +12,6 @@ class FoodMap extends Component {
     markers: []
   }
 
-  /*
-   * This is called when you click on the map.
-   * Go and try click now.
-   */
   componentWillMount() {
     let { markers } = this.state;
 
@@ -42,7 +38,7 @@ class FoodMap extends Component {
             }
           },
           defaultAnimation: 2,
-          key: mapData[i].key, // Add a key property for: http://fb.me/react-warning-keys
+          key: mapData[i].key,
         },
       ],
     });
@@ -51,7 +47,6 @@ class FoodMap extends Component {
   }
 
   handleMarkerClick(marker) {
-    console.log('marker clicked!', marker);
     marker.showInfo = true;
     this.setState({ marker });
   }
@@ -62,7 +57,6 @@ class FoodMap extends Component {
   }
 
   renderInfoWindow(marker) {
-    console.log('infoWindow rendered', marker);
     return (
       <InfoWindow
       key={marker.key}
@@ -86,7 +80,6 @@ class FoodMap extends Component {
     )
   }
   render() {
-    console.log('this is the map data', this.state.markers);
     const { markers } = this.state;
     return (
       <GoogleMapLoader

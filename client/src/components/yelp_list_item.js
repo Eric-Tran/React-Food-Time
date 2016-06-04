@@ -44,7 +44,6 @@ class YelpList extends Component {
  		})
  	}
 	render() {
-		console.log("this is the wait",this.props.data.wait_data)
 		const { handleSubmit, fields: { day, wait, arrival }} = this.props;
 		return (
 		<li className="list-group-item">
@@ -100,7 +99,7 @@ class YelpList extends Component {
 				         			<option value="21">9 PM</option>
 				         			<option value="22">10 PM</option>
 				         			<option value="23">11 PM</option>
-				         			<option value="24">12 AM</option>
+				         			<option value="0">12 AM</option>
 				         		</select>
 				         	</fieldset>
 				         	<fieldset className="form-group">

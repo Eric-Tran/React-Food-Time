@@ -4,7 +4,6 @@ import * as actions from '../../actions';
 
 class Signup extends Component {
 	handleFormSubmit(formProps) {
-		//Call action creator to sign up the user.
 		this.props.signupUser(formProps);
 	}
 	renderAlert() {
@@ -64,7 +63,6 @@ function mapStateToProps(state) {
 	return { errorMessage: state.auth.error }
 }
 
-//ES6 { validate: validate }
 export default reduxForm({
 	form: 'signup',
 	fields: ['email', 'password', 'passwordConfirm'], 

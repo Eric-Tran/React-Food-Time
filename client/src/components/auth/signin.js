@@ -42,9 +42,6 @@ function mapStateToProps(state) {
 	return { errorMessage: state.auth.error };
 }
 
-//First set of parens is to pass configurations, second is the component.
-//null is first argument, not using yet, mapStateToProps
-//third argument pass in actions to get access to all the actions as props
 export default reduxForm({
 	form: 'signin',
 	fields: ['email', 'password']

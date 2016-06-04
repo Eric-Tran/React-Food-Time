@@ -9,10 +9,12 @@ class Feature extends Component {
 	componentWillMount() {
 		this.props.fetchRecentActivity();
 	}
-	
 	constructor(props) {
 		super(props);
-		this.state = {showMap: false};
+		this.state = {
+			showMap: false,
+			showActivity: true
+		};
 	}
 	hide() {
 		this.setState({showMap: false})
@@ -22,36 +24,44 @@ class Feature extends Component {
 	}
 	handleFormSubmit({ term, location }) {
 		this.props.fetchData( { term, location });
-		this.setState({showMap: true});
+		this.setState({
+			showMap: true,
+			showActivity: false
+		});
 	}
-	renderData() {
-		if (typeof this.props.data == 'undefined') {
+	renderActivity() {
+		if (this.state.showActivity == true) {
 			return (
-				<RecentActivity
+		<RecentActivity
 					activity={this.props.activity} />
 			)
-		} else {
-			return this.props.data.map((data) => {
-				return (
-					<YelpListItem
-						key={data.id}
-						data={data} />
-				)
-			});
 		}
 	}
-	renderMap(data) {
+	renderData(yelpItem) {
+		return (
+			<YelpListItem
+				key={yelpItem.id}
+				data={yelpItem} />
+		)
+		}
+	renderMap() {
 		if (this.state.showMap == true) {
-			const lon = data[0].location.coordinate.longitude;
-			const lat = data[0].location.coordinate.latitude;
+			let lon = this.props.data[0].location.coordinate.longitude;
+			let lat = this.props.data[0].location.coordinate.latitude;
+			let data = this.props.data;
 		return (
 			<GoogleMap data={data} lon={lon} lat={lat} />
 		)
 		}
 	}
 	render() {
-		console.log("These are the props", this.props);
 		const { handleSubmit, fields: { term, location }} = this.props;
+		let yelpData;
+		if (this.props.data) {
+			yelpData = this.props.data.map(this.renderData);
+			let lon = this.props.data[0].location.coordinate.longitude;
+			let lat = this.props.data[0].location.coordinate.latitude;
+		}
 		return (
 			<div>
 				<div className="jumbotron wood">
@@ -69,11 +79,12 @@ class Feature extends Component {
 					<Link to="/decide" className='btn btn-primary gray'>Can't Decide?</Link>
 					<img className='yelp_logo' src="../../style/img/yelp.png" alt="Powered by Yelp" />
 				</div>
+				{this.renderActivity()}
 				<ul className="list-group list-container">
-				{this.renderData()}
+				{yelpData}
 				</ul>
-				<div className="map_container">
-				{this.renderMap(this.props.data)}
+				<div className='map_container'>
+				{this.renderMap()}
 				</div>
 			</div>
 		)
@@ -81,7 +92,6 @@ class Feature extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state.yelp.data);
 	return { 
 		data: state.yelp.data,
 		activity: state.activity.data

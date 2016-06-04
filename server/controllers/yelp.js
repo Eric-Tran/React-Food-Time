@@ -40,7 +40,7 @@ exports.searchYelp = function(req, res, next) {
 					var hour = date.getHours()
 					var num = 1;
 					for (var i = 0; i < data.businesses.length; i++) {
-						if (data.businesses[i].phone !== undefined) {
+						if (data.businesses[i].phone) {
 							var phone = data.businesses[i].phone;
 							var paren1 = "(";
 							var paren2 = ") ";
@@ -53,6 +53,7 @@ exports.searchYelp = function(req, res, next) {
 						data.businesses[i].wait_data = [];
 						data.businesses[i].key = num++;
 						for (var x = 0; x < result.length; x++) {
+							console.log("this is the restuarant", result[x].business_id, "this is the saved day", result[x].day, "this is current day", dayOfWeek[day], "this is saved hour", result[x].arrival_time, "this is current hour", hour);
 							if (data.businesses[i].id == result[x].business_id) {
 								if (result[x].day == dayOfWeek[day] && result[x].arrival_time == hour) {
 									var estWait = result[x].wait_time;
@@ -61,7 +62,7 @@ exports.searchYelp = function(req, res, next) {
 								var timeConv = {1: "1 AM", 2: "2 AM", 3: "3 AM", 4: "4 AM", 5: "5 AM", 6: "6 AM", 
 								7: "7 AM", 8: "8 AM", 9: "9 AM", 10: "10 AM", 11: "11 AM", 12: "12 PM", 13: "1 PM", 
 								14: "2 PM", 15: "3 PM", 16: "4 PM", 17: "5 PM", 18: "6 PM", 19: "7 PM", 20: "8 PM", 
-								21: "9 PM", 22: "10 PM", 23: "11 PM", 24: "12 AM"};
+								21: "9 PM", 22: "10 PM", 23: "11 PM", 0: "12 AM"};
 
 								var obj = {
 									wait: result[x].wait_time,
