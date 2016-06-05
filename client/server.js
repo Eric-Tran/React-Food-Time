@@ -8,4 +8,4 @@ app.use(express.static(__dirname + '/'));
 app.get('*', function (request, response) {
 	response.sendFile(path.resolve(__dirname, 'index.html'))
 })
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 5000);
