@@ -12,13 +12,9 @@ class FoodMap extends Component {
     markers: []
   }
   componentWillReceiveProps(nextProps) {
-    console.log('recieivng new props', nextProps);
-    console.log('oldprops', this.props);
-    console.log('this is the state', this.state);
     let { markers } = this.state;
 
     let mapData = nextProps.data;
-    console.log("this is the mapDtat", nextProps);
     for(var i = 0; i < mapData.length; i++) {
        markers = update(markers, {
       $unshift: [
@@ -119,7 +115,6 @@ class FoodMap extends Component {
   }
   render() {
     const { markers } = this.state;
-    console.log('this is the markers', this.state.markers);
     let lat = this.state.markers[0].position.lat
     let lng = this.state.markers[0].position.lng
     return (

@@ -315,7 +315,6 @@ class FoodItems extends Component {
 }
 
 function mapStateToProps(state) {
-	console.log(state.yelp.data);
 	return { 
 		data: state.yelp.data,
 		activity: state.activity.data
