@@ -176,8 +176,6 @@ class YelpList extends Component {
 	}
 }
 
-
-
 export default reduxForm({
 	form: 'waitForm',
 	fields: ['day', 'arrival', 'wait']

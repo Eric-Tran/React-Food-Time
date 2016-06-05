@@ -11,6 +11,44 @@ class FoodMap extends Component {
   state = {
     markers: []
   }
+  componentWillReceiveProps(nextProps) {
+    console.log('recieivng new props', nextProps);
+    console.log('oldprops', this.props);
+    console.log('this is the state', this.state);
+    let { markers } = this.state;
+
+    let mapData = nextProps.data;
+    console.log("this is the mapDtat", nextProps);
+    for(var i = 0; i < mapData.length; i++) {
+       markers = update(markers, {
+      $unshift: [
+        {
+          position: {
+            lat: mapData[i].location.coordinate.latitude,
+            lng: mapData[i].location.coordinate.longitude
+          },
+          showInfo: false,
+          info: {
+            name: mapData[i].name,
+            review_img: mapData[i].rating_img_url,
+            review_count: mapData[i].review_count,
+            img: mapData[i].image_url,
+            img_link: mapData[i].yelp_img_url,
+            wait: mapData[i].est_wait,
+            address: {
+              line1: mapData[i].location.display_address[0],
+              line2: mapData[i].location.display_address[2]
+            }
+          },
+          defaultAnimation: 2,
+          key: mapData[i].id,
+        },
+      ],
+    });
+    }
+    markers.length = 10;
+    this.setState({markers});
+  };
 
   componentWillMount() {
     let { markers } = this.state;
@@ -43,7 +81,7 @@ class FoodMap extends Component {
       ],
     });
     }
-    this.setState({ markers });
+    this.setState({markers});
   }
 
   handleMarkerClick(marker) {
@@ -81,6 +119,9 @@ class FoodMap extends Component {
   }
   render() {
     const { markers } = this.state;
+    console.log('this is the markers', this.state.markers);
+    let lat = this.state.markers[0].position.lat
+    let lng = this.state.markers[0].position.lng
     return (
       <GoogleMapLoader
         containerElement={
@@ -95,7 +136,7 @@ class FoodMap extends Component {
           <GoogleMap
             ref={(map) => (this._googleMapComponent = map) && console.log(map.getZoom())}
             defaultZoom={11}
-            defaultCenter={{ lat: this.props.lat, lng: this.props.lon }}
+            center={{ lat: lat, lng: lng }}
           >
             {markers.map((marker, index) => {
               return (

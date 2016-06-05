@@ -43,6 +43,8 @@ p {
 .clock_logo {
 	width: 20%;
 	height: 20%;
+	margin: 0 auto;
+	display:block;
 }
 .yelp_logo {
 	display: inline-block;

@@ -10,7 +10,8 @@ class Signout extends Component {
 	render() {
 		return (
 		<div className="jumbotron wood">
-			<h1 className='display-3'>Stay hungry. Come back soon!</h1>
+			<img className="clock_logo" src="../style/img/clock.png" /> 
+			<h1 className='display-3 center'>Stay hungry. Come back soon!</h1>
 		</div>
 		)
 	}
