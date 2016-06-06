@@ -36,9 +36,8 @@ exports.searchYelp = function(req, res, next) {
 						6: "Saturday"
 					}
 					var date = new Date();
-					var timeOffset = (date.getTimezoneOffset()/60);
 					var day = date.getDay();
-					var hour = date.getHours() + timeOffset
+					var hour = date.getHours()
 					var num = 1;
 					for (var i = 0; i < data.businesses.length; i++) {
 						if (data.businesses[i].phone) {
@@ -54,7 +53,8 @@ exports.searchYelp = function(req, res, next) {
 						data.businesses[i].wait_data = [];
 						data.businesses[i].key = num++;
 						for (var x = 0; x < result.length; x++) {
-							console.log("this is date UTC", date, "this the offset", timeOffset, "this is the restuarant", result[x].business_id, "this is the saved day", result[x].day, "this is current day", dayOfWeek[day], "this is saved hour", result[x].arrival_time, "this is current hour", hour);
+							var arrivalTimeUTC = hour + result[x].created_at.getTimezoneOffset()/60;
+							console.log("this is date UTC", date, "this is the restuarant", result[x].business_id, "this is the saved day", result[x].day, "this is current day", dayOfWeek[day], "this is saved hour", result[x].arrival_time, "this is current hour", hour, "arrival offset", arrivalTimeUTC);
 							if (data.businesses[i].id == result[x].business_id) {
 								if (result[x].day == dayOfWeek[day] && result[x].arrival_time == hour) {
 									var estWait = result[x].wait_time;
