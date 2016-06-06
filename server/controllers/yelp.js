@@ -56,7 +56,7 @@ exports.searchYelp = function(req, res, next) {
 							var arrivalTimeUTC = hour + result[x].created_at.getTimezoneOffset()/60;
 							console.log("this is date UTC", date, "this is the restuarant", result[x].business_id, "this is the saved day", result[x].day, "this is current day", dayOfWeek[day], "this is saved hour", result[x].arrival_time, "this is current hour", hour, "arrival offset", arrivalTimeUTC);
 							if (data.businesses[i].id == result[x].business_id) {
-								if (result[x].day == dayOfWeek[day] && result[x].arrival_time == hour) {
+								if (result[x].day == dayOfWeek[day] && arrivalTimeUTC == hour) {
 									var estWait = result[x].wait_time;
 									data.businesses[i].est_wait = estWait;
 								}
