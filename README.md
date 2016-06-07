@@ -13,5 +13,5 @@ Twitter Bootstrap<br/>
 Yelp Businesses API<br/>
 Google Maps API
 
-Visit: <a href="reactfoodtime.herokuapp.com">Food Time</a>
+Visit: <a href="http://reactfoodtime.herokuapp.com">Food Time</a>
 
