@@ -17,7 +17,7 @@ class Header extends Component {
 	renderAuthenticated() {
 		if (this.props.authenticated) {
 			return (
-				<div>
+				<div className="header-flex">
 				<li className="nav-item pull-right">
 					<Link className="nav-link" to="/search">Search</Link>
 				</li>
@@ -31,10 +31,10 @@ class Header extends Component {
 			);
 		} else {
 			return [
-				<li className="nav-item" key={1}>
+				<li className="nav-item pull-right" key={1}>
 						<Link className="nav-link" to="/signin">Sign In</Link>
 				</li>,
-				<li className="nav-item" key={2}>
+				<li className="nav-item pull-right" key={2}>
 					<Link className="nav-link" to="/signup">Sign Up</Link>
 				</li>
 			];
@@ -42,8 +42,8 @@ class Header extends Component {
 	}
 	render() {
 		return (
-			<nav className="navbar navbar-dark bg-inverse navbar-fixed-top">
-				<div className="container">
+			<nav className="navbar navbar-dark navbar-fixed-top">
+				<div className="container bg-inverse">
 					<div className="navbar-header">
 						{this.renderHeader()}
 						<ul className="nav navbar-nav">

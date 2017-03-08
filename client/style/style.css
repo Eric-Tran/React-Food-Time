@@ -8,6 +8,7 @@ p {
 .wood {
 	background-image: url("img/background/purty_wood.png");
 	width: 100%;
+	box-shadow: 0 2px 3px 0 rgba(56, 75, 105, 0.15);
 }
 .gray {
 	background-color: #373a3c !important;
@@ -20,9 +21,24 @@ p {
 .navbar-brand, .nav-link {
 	color: gray;
 }
+.navbar-header {
+	margin-left: 20px !important;
+}
+.navbar-nav {
+	display: inline-flex !important;
+	flex-direction: row !important;
+}
+.nav-item {
+	margin-left: 10px;
+}
+.header-flex {
+	display: flex;
+	flex-direction: row;
+	line-height: 50px;
+}
 
 .top-margin {
-	margin-top: 100px;
+	margin-top: 80px;
 }
 .background {
 	background-image: url("img/background/food.png");
@@ -85,8 +101,9 @@ p {
 }
 
 .thumb_img {
-	width: 250px;
+	width: 240px;
 	height: 150px;
+	box-shadow: 0 2px 3px 0 rgba(56, 75, 105, 0.15);
 }
 .wait{
 	color: green;
@@ -143,3 +160,7 @@ padding: 0px;
 	display:block;
 }
 
+.bg-inverse {
+    background-color: #292b2c !important;
+    background-clip: content-box;
+}
