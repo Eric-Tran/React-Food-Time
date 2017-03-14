@@ -1,0 +1,166 @@
+p {
+	font-size: .9em;
+}
+#welcome_header, .center {
+	text-align: center;
+}
+
+.wood {
+	background-image: url("img/background/purty_wood.png");
+	width: 100%;
+	box-shadow: 0 2px 3px 0 rgba(56, 75, 105, 0.15);
+}
+.gray {
+	background-color: #373a3c !important;
+	margin-right: 10px;
+}
+.error {
+	color: red;
+}
+
+.navbar-brand, .nav-link {
+	color: gray;
+}
+.navbar-header {
+	margin-left: 20px !important;
+}
+.navbar-nav {
+	display: inline-flex !important;
+	flex-direction: row !important;
+}
+.nav-item {
+	margin-left: 10px;
+}
+.header-flex {
+	display: flex;
+	flex-direction: row;
+	line-height: 50px;
+}
+
+.top-margin {
+	margin-top: 80px;
+}
+.background {
+	background-image: url("img/background/food.png");
+}
+
+.form-size {
+	width: 50%;
+	margin: 0 auto;
+	background-image: url("img/background/purty_wood.png");
+}
+
+.form-width {
+	width: 50%;
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.clock_logo {
+	width: 20%;
+	height: 20%;
+	margin: 0 auto;
+	display:block;
+}
+.yelp_logo {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.address{
+	float: right;
+	display: block;
+}
+.address p {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.media-body p {
+	margin-bottom: 0px;
+}
+.media-margin {
+	margin-bottom: 10px;
+}
+.list-container {
+	display: inline-block;
+	width: 65%;
+	height: 100%;
+}
+.form-inline {
+	margin-bottom: 20px;
+}
+.form-inline input, label, .btn-spacing {
+	margin-right: 10px;
+}
+.spacing {
+	margin-left: 10px;
+}
+.btm-spacing {
+	margin-bottom: 10px;
+}
+
+.thumb_img {
+	width: 240px;
+	height: 150px;
+	box-shadow: 0 2px 3px 0 rgba(56, 75, 105, 0.15);
+}
+.wait{
+	color: green;
+}
+.btn-sm {
+	margin-right: 10px;
+}
+
+.btn-primary {
+	background-color: #373a3c;
+}
+
+.media-body {
+	padding-bottom: 10px;
+}
+.map_container {
+	display:inline-block;
+	height: 350px;
+	width: 350px;
+	float: right;
+}
+.map_item_container {
+	height: 350px;
+	width: 350px;
+	float: right;
+}
+
+.no_border {
+	padding: 0;
+	border: none;
+	background: none;
+	margin-right: 10px;
+}
+.info_p {
+margin: 10px 0px 0px 0px;
+padding: 0px;
+}
+.info {
+	display: inline-block;
+}
+.info p:nth-of-type(3), .info p:nth-of-type(4)  {
+	font-weight: bold;
+}
+.info_img {
+	margin-left: 10px;
+	vertical-align: top;
+	display: inline-block;
+}
+.info p:nth-of-type(1), .info p:nth-of-type(2) {
+	margin: 0px;
+	padding: 0px;
+}
+.info_img a, .item_label{
+	display:block;
+}
+
+.bg-inverse {
+    background-color: #292b2c !important;
+    background-clip: content-box;
+}
